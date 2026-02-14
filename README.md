@@ -2,8 +2,6 @@
 
 A modern, responsive portfolio website built with HTML, CSS, and JavaScript to showcase my skills, education, projects, and certifications.
 
-## 🌐 Live Demo
-[View Portfolio](https://your-username.github.io/your-repository-name)
 
 ## 📁 Project Structure
 ```
