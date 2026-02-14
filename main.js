@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update header class for fixed positioning
         if (targetId === '#header') {
             header.classList.remove('header-top');
-            // Disable scroll on home page
-            document.body.classList.add('no-scroll');
+            // Fix home page - no up/down movement
+            document.body.classList.add('home-fixed');
         } else {
             header.classList.add('header-top');
-            // Enable scroll on other sections
-            document.body.classList.remove('no-scroll');
+            // Allow normal behavior on other sections
+            document.body.classList.remove('home-fixed');
         }
     }
     
@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Get the target section
             const target = this.getAttribute('href');
-            console.log(`Navigating to: ${target}`);
             
             // Show the target section
             showSection(target);
@@ -58,32 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize - show home section by default
     showSection('#header');
-
-    // Project card click functionality
-    const projectImages = document.querySelectorAll('.project-image');
-    console.log('Found ' + projectImages.length + ' project images');
-    
-    projectImages.forEach((image, index) => {
-        image.addEventListener('click', function(e) {
-            console.log('Clicked on project image ' + index);
-            e.stopPropagation();
-            const projectCard = this.closest('.project-card');
-            console.log('Project card:', projectCard);
-            if (projectCard) {
-                projectCard.classList.toggle('active');
-                console.log('Active class toggled. Active now:', projectCard.classList.contains('active'));
-            }
-        });
-    });
-
-    // Close project info when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.project-card')) {
-            document.querySelectorAll('.project-card.active').forEach(card => {
-                card.classList.remove('active');
-            });
-        }
-    });
     
     // Typing effect for the role text
     const typingElement = document.querySelector('.typing');
@@ -137,26 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Console welcome message
-    console.log('%c Welcome to R THARUN REDDY\'s Portfolio! ', 'background: #12D640; color: white; padding: 5px 10px; border-radius: 3px; font-weight: bold;');
-    console.log('Feel free to explore the code and reach out if you have any questions!');
+    console.log('%c Welcome to B SIVAKRISHNA\'s Portfolio! ', 'background: #12D640; color: white; padding: 5px 10px; border-radius: 3px; font-weight: bold;');
+    console.log('Portfolio loaded successfully!');
     
 });
-
-// Project scroll functionality
-function scrollProjectContent(button, direction) {
-    const projectInfo = button.closest('.project-info');
-    const projectContent = projectInfo.querySelector('.project-content');
-    const scrollAmount = 50; // pixels to scroll
-    
-    if (direction === 'up') {
-        projectContent.scrollTop -= scrollAmount;
-    } else if (direction === 'down') {
-        projectContent.scrollTop += scrollAmount;
-    }
-    
-    // Add visual feedback
-    button.style.transform = 'scale(0.9)';
-    setTimeout(() => {
-        button.style.transform = 'scale(1)';
-    }, 150);
-}
