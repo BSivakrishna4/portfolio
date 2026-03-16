@@ -235,16 +235,18 @@ h6 {
 /* Mobile Navigation Toggle Button */
 .mobile-nav-toggle {
   display: none;
-  background: none;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: rgba(9, 32, 58, 0.95);
   border: 2px solid rgba(18, 214, 64, 0.5);
   border-radius: 6px;
   color: #fff;
   font-size: 24px;
   cursor: pointer;
   padding: 4px 8px;
-  margin-top: 15px;
   transition: all 0.3s ease;
-  z-index: 9999;
+  z-index: 99999;
 }
 
 .mobile-nav-toggle:hover {
@@ -261,11 +263,13 @@ h6 {
 /* Mobile Navigation Menu */
 .mobile-nav-menu {
   display: none;
-  width: 100%;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
   background: rgba(9, 32, 58, 0.98);
-  border-radius: 10px;
-  margin-top: 10px;
-  border: 1px solid rgba(18, 214, 64, 0.3);
+  border-bottom: 1px solid rgba(18, 214, 64, 0.3);
+  z-index: 99998;
   overflow: hidden;
 }
 
@@ -290,7 +294,7 @@ h6 {
 .mobile-nav-menu ul li a {
   display: block;
   color: #fff;
-  padding: 12px 20px;
+  padding: 14px 24px;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -301,7 +305,7 @@ h6 {
 .mobile-nav-menu ul li a:hover {
   color: #12d640;
   background: rgba(18, 214, 64, 0.1);
-  padding-left: 28px;
+  padding-left: 32px;
 }
 
 .mobile-nav-menu ul li.active a {
