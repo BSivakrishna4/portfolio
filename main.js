@@ -57,6 +57,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize - show home section by default
     showSection('#header');
+
+    // Mobile Navigation Toggle
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileNavMenu = document.getElementById('mobileNavMenu');
+
+    if (mobileNavToggle && mobileNavMenu) {
+        mobileNavToggle.addEventListener('click', function () {
+            mobileNavMenu.classList.toggle('open');
+            // Toggle icon between menu and close
+            const icon = this.querySelector('i');
+            if (mobileNavMenu.classList.contains('open')) {
+                icon.classList.remove('bx-menu');
+                icon.classList.add('bx-x');
+            } else {
+                icon.classList.remove('bx-x');
+                icon.classList.add('bx-menu');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileNavLinks = mobileNavMenu.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                // Don't prevent default for external links (resume)
+                if (this.getAttribute('target') === '_blank') {
+                    mobileNavMenu.classList.remove('open');
+                    const icon = mobileNavToggle.querySelector('i');
+                    icon.classList.remove('bx-x');
+                    icon.classList.add('bx-menu');
+                    return;
+                }
+
+                e.preventDefault();
+                const target = this.getAttribute('href');
+
+                // Close menu
+                mobileNavMenu.classList.remove('open');
+                const icon = mobileNavToggle.querySelector('i');
+                icon.classList.remove('bx-x');
+                icon.classList.add('bx-menu');
+
+                // Update active state
+                mobileNavLinks.forEach(l => l.parentElement.classList.remove('active'));
+                this.parentElement.classList.add('active');
+
+                // Show section
+                showSection(target);
+            });
+        });
+    }
     
     // Typing effect for the role text
     const typingElement = document.querySelector('.typing');
