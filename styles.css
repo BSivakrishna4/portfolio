@@ -1529,7 +1529,7 @@ rease size of second education card image */
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: #2c3e50;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
